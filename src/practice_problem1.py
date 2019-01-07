@@ -251,8 +251,9 @@ class Box(object):
     def shrink(self, new_volume):
 
         if self.volume <= new_volume:
-
+            self.volume = new_volume
             return ''
+
         else:
             sbb = ''
             for k in range(new_volume, len(self.contents)):
@@ -262,6 +263,7 @@ class Box(object):
             for k in range(new_volume):
                 abb += self.contents[k]
             self.contents = abb
+
 
             return sbb
 
