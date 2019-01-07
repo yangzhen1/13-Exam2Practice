@@ -42,8 +42,8 @@ def main():
 
     # run_test_init()
     # run_test_append_string()
-    run_test_double()
-    # run_test_shrink()
+    # run_test_double()
+    run_test_shrink()
     # run_test_double_then_shrink()
     # run_test_reset()
     # run_test_steal()
@@ -192,12 +192,13 @@ class Box(object):
             self.contents = self.contents * 2
             return ''
         else:
+            aap = self.contents
             pear = self.volume - len(self.contents)
             for k in range(0, pear):
                 self.contents += self.contents[k]
             apple = len(self.contents) * 2 - self.volume
             ssd = ''
-            for k in range(pear, self.volume):
+            for k in range(pear, len(aap)):
                 ssd += self.contents[k]
             return ssd
 
@@ -234,7 +235,7 @@ class Box(object):
           #                       contents that did NOT fit]
         """
         # ---------------------------------------------------------------------
-        # TODO: 4. Implement and test this function.
+        # DONE: 4. Implement and test this function.
         #     The testing code is already written for you (above).
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -248,6 +249,26 @@ class Box(object):
         #######################################################################
 
     def shrink(self, new_volume):
+
+        if self.volume <= new_volume:
+
+            return ''
+        else:
+            sbb = ''
+            for k in range(new_volume, len(self.contents)):
+                sbb += self.contents[k]
+
+            abb = ''
+            for k in range(new_volume):
+                abb += self.contents[k]
+            self.contents = abb
+
+            return sbb
+
+
+
+
+
         """
         What comes in:
           -- self
