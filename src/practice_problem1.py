@@ -6,8 +6,8 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Zhen Yang.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -42,7 +42,7 @@ def main():
 
     # run_test_init()
     # run_test_append_string()
-    # run_test_double()
+    run_test_double()
     # run_test_shrink()
     # run_test_double_then_shrink()
     # run_test_reset()
@@ -64,6 +64,14 @@ class Box(object):
     """
 
     def __init__(self, contents, volume):
+        if len(contents) <= volume:
+            self.contents = contents
+            self.volume = volume
+        else:
+            self.contents = ''
+            self.volume = volume
+
+
         """
         What comes in:
           -- self
@@ -95,7 +103,7 @@ class Box(object):
           :type volume: int
         """
         # ---------------------------------------------------------------------
-        # TODO: 2. Implement and test this function.
+        # DONE: 2. Implement and test this function.
         #     See the testing code (below) for more examples.
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -105,6 +113,25 @@ class Box(object):
         # ---------------------------------------------------------------------
 
     def append_string(self, additional_contents):
+        if len(additional_contents) + len(self.contents) <= self.volume:
+            self.contents += additional_contents
+            spp = ''
+            return spp
+        else:
+            apple = self.volume - len(self.contents)
+            pear = len(self.contents) + len(additional_contents) - self.volume
+
+            for k in range(0, apple):
+                self.contents += additional_contents[k]
+
+            sdd = ''
+            for k in range(pear - 1,
+                           len(additional_contents)):
+                sdd += additional_contents[k]
+
+            return sdd
+
+
         """
         What comes in:
           -- self
@@ -136,7 +163,7 @@ class Box(object):
           :type additional_contents: str
         """
         # ---------------------------------------------------------------------
-        # TODO: 3. Implement and test this function.
+        # DONE: 3. Implement and test this function.
         #     See the testing code (below) for more examples.
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -160,6 +187,20 @@ class Box(object):
         # ---------------------------------------------------------------------
 
     def double(self):
+
+        if self.volume >= len(self.contents) * 2:
+            self.contents = self.contents * 2
+            return ''
+        else:
+            pear = self.volume - len(self.contents)
+            for k in range(0, pear):
+                self.contents += self.contents[k]
+            apple = len(self.contents) * 2 - self.volume
+            ssd = ''
+            for k in range(pear, self.volume):
+                ssd += self.contents[k]
+            return ssd
+
         """
         What comes in:
           -- self
