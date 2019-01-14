@@ -46,9 +46,9 @@ def main():
     # run_test_shrink()
     # run_test_double_then_shrink()
     # run_test_reset()
-    # run_test_steal()
+    run_test_steal()
     # run_test_get_history()
-    run_test_combined_box()
+    # run_test_combined_box()
 
 
 ###############################################################################
@@ -64,8 +64,7 @@ class Box(object):
     """
 
     def __init__(self, contents, volume):
-        self.inicontent = contents
-        self.inivolume = volume
+
         self.forfutureuse = []
         if len(contents) <= volume:
             self.contents = contents
@@ -74,7 +73,10 @@ class Box(object):
         else:
 
             self.contents = ''
+
             self.volume = volume
+        self.inicontent = self.contents
+        self.inivolume = self.volume
 
 
         """
@@ -129,12 +131,12 @@ class Box(object):
             for k in range(0, apple):
                 self.contents += additional_contents[k]
 
-            self.sdd = ''
+            sdd = ''
             for k in range(pear - 1,
                            len(additional_contents)):
-                self.sdd += additional_contents[k]
+                sdd += additional_contents[k]
 
-            return self.sdd
+            return sdd
 
 
         """
@@ -385,7 +387,7 @@ class Box(object):
         # ---------------------------------------------------------------------
 
     def reset(self):
-        self.histy = self.contents
+
 
         self.contents = self.inicontent
         self.volume = self.inivolume
@@ -408,10 +410,11 @@ class Box(object):
         # ---------------------------------------------------------------------
 
     def steal(self, other_box):
-        self.contents = self.inicontent
-        self.volume = self.inivolume
-        self.append_string(other_box)
-        return self.sdd
+
+        aaa = self.append_string(other_box.contents)
+        other_box.contents = aaa
+
+
 
 
         """
