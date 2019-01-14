@@ -45,10 +45,10 @@ def main():
     # run_test_double()
     # run_test_shrink()
     # run_test_double_then_shrink()
-    run_test_reset()
+    # run_test_reset()
     # run_test_steal()
     # run_test_get_history()
-    # run_test_combined_box()
+    run_test_combined_box()
 
 
 ###############################################################################
@@ -64,17 +64,15 @@ class Box(object):
     """
 
     def __init__(self, contents, volume):
-        #self.forthegodsake = contents
-        #self.forthejesussake = volume
-        self.formymomssake = []
+        self.inicontent = contents
+        self.inivolume = volume
+        self.forfutureuse = []
         if len(contents) <= volume:
             self.contents = contents
             self.volume = volume
-            self.forthegodsake = contents
-            self.forthejesussake = volume
+
         else:
-            self.forthegodsake = contents
-            self.forthejesussake = volume
+
             self.contents = ''
             self.volume = volume
 
@@ -131,12 +129,12 @@ class Box(object):
             for k in range(0, apple):
                 self.contents += additional_contents[k]
 
-            sdd = ''
+            self.sdd = ''
             for k in range(pear - 1,
                            len(additional_contents)):
-                sdd += additional_contents[k]
+                self.sdd += additional_contents[k]
 
-            return sdd
+            return self.sdd
 
 
         """
@@ -387,9 +385,10 @@ class Box(object):
         # ---------------------------------------------------------------------
 
     def reset(self):
+        self.histy = self.contents
 
-        self.contents = self.forthegodsake
-        self.volume = self.forthejesussake
+        self.contents = self.inicontent
+        self.volume = self.inivolume
         """
         What comes in:
           -- self
@@ -409,6 +408,12 @@ class Box(object):
         # ---------------------------------------------------------------------
 
     def steal(self, other_box):
+        self.contents = self.inicontent
+        self.volume = self.inivolume
+        self.append_string(other_box)
+        return self.sdd
+
+
         """
         What comes in:
           -- self
@@ -441,6 +446,7 @@ class Box(object):
         #######################################################################
 
     def get_history(self):
+        return self.histy
         """
         What comes in:
           -- self
@@ -480,6 +486,9 @@ class Box(object):
         # ---------------------------------------------------------------------
 
     def combined_box(self, other_box):
+        self.contents += other_box.contents
+        self.volume += other_box.volume
+
         """
         What comes in:
           -- self
