@@ -3,8 +3,8 @@ PRACTICE Exam 2, practice_problem 2.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and ZHen Yang.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -58,9 +58,33 @@ def run_test_practice_problem2a():
     print('--------------------------------------------------')
     print('Testing the   practice_problem2a   function:')
     print('--------------------------------------------------')
+    expected = [3,4,5,6,7]
+    actual = practice_problem2a([1,2,3,4,5], 2)
+    print('expected:', expected )
+    print('actual:', actual)
+
+    expected = [2,8,7,3,4]
+    actual = practice_problem2a([3,9,8,4,5], -1)
+    print('expected:', expected )
+    print('actual:', actual)
+
+    expected = [1,2,3,4,5]
+    actual = practice_problem2a([1,2,3,4,5], 0)
+    print('expected:', expected )
+    print('actual:', actual)
+
+    expected = [1,0,-1,-1,6]
+    actual = practice_problem2a([-1,-2,-3,-3,4], 2)
+    print('expected:', expected )
+    print('actual:', actual)
 
 
 def practice_problem2a(sequence, delta):
+    org = []
+    for k in range(len(sequence)):
+        org += [sequence[k] + delta]
+    return org
+
     """
     What comes in:
       -- A sequence of integers, e.g. ([2, 10, 5, -20, 8])
@@ -168,6 +192,14 @@ def run_test_practice_problem2b():
 
 
 def practice_problem2b(sequence):
+    org = ''
+    for k in range(len(sequence)):
+        if len(sequence[k])>0:
+            org += str(sequence[k][0])
+    return org
+
+
+
     """
     What comes in:
       -- A sequence of strings, e.g. ('hello', 'Bye', 'ok joe')
@@ -187,7 +219,7 @@ def practice_problem2b(sequence):
       :type sequence: [str]
     """
     ###########################################################################
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #     The testing code is already written for you (above).
     ###########################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
