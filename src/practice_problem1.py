@@ -43,9 +43,9 @@ def main():
     # run_test_init()
     # run_test_append_string()
     # run_test_double()
-    run_test_shrink()
+    # run_test_shrink()
     # run_test_double_then_shrink()
-    # run_test_reset()
+    run_test_reset()
     # run_test_steal()
     # run_test_get_history()
     # run_test_combined_box()
@@ -64,10 +64,17 @@ class Box(object):
     """
 
     def __init__(self, contents, volume):
+        #self.forthegodsake = contents
+        #self.forthejesussake = volume
+        self.formymomssake = []
         if len(contents) <= volume:
             self.contents = contents
             self.volume = volume
+            self.forthegodsake = contents
+            self.forthejesussake = volume
         else:
+            self.forthegodsake = contents
+            self.forthejesussake = volume
             self.contents = ''
             self.volume = volume
 
@@ -187,6 +194,7 @@ class Box(object):
         # ---------------------------------------------------------------------
 
     def double(self):
+        self.purple = 0
 
         if self.volume >= len(self.contents) * 2:
             self.contents = self.contents * 2
@@ -200,6 +208,8 @@ class Box(object):
             ssd = ''
             for k in range(pear, len(aap)):
                 ssd += self.contents[k]
+
+            self.purple = len(ssd)
             return ssd
 
         """
@@ -249,11 +259,12 @@ class Box(object):
         #######################################################################
 
     def shrink(self, new_volume):
-        # aabb = new_volume
+        self.ppg = 0
+        self.volume = new_volume
 
-        if self.volume <= new_volume:
+        if len(self.contents) <= new_volume:
             return ''
-        elif self.volume > new_volume:
+        else:
             sbb = ''
             for k in range(new_volume, len(self.contents)):
                 sbb += self.contents[k]
@@ -262,7 +273,8 @@ class Box(object):
             for k in range(new_volume):
                 abb += self.contents[k]
             self.contents = abb
-            #self.volume = aabb
+            self.ppg = self.purple - len(self.contents)
+
 
             return sbb
 
@@ -305,7 +317,7 @@ class Box(object):
           :type new_volume: int
         """
         # ---------------------------------------------------------------------
-        # TODO: 5. Implement and test this function.
+        # DONE: 5. Implement and test this function.
         #     The testing code is already written for you (above).
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -318,6 +330,10 @@ class Box(object):
         # ---------------------------------------------------------------------
 
     def double_then_shrink(self, new_volume):
+        self.double()
+        self.shrink(new_volume)
+
+        return self.ppg
         """
         What comes in:
           -- self
@@ -371,6 +387,9 @@ class Box(object):
         # ---------------------------------------------------------------------
 
     def reset(self):
+
+        self.contents = self.forthegodsake
+        self.volume = self.forthejesussake
         """
         What comes in:
           -- self
